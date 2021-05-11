@@ -1,0 +1,3 @@
+# LeetCode-Javascript-Solution
+## My JS solution
+Record my commit on Leetcode with javascript...
