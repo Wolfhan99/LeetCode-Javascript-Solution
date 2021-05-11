@@ -49,27 +49,7 @@
  * @return {number}
  */
 var maxProfit = function(prices, fee) {
-    let profit = 0;
-    let buy = prices[0] + fee;
-    for(let i = 1; i<prices.length; i++) {
-        if(prices[i] + fee < buy){
-            buy = prices[i] + fee;
-        }
-        // 计算利润， 可能存在多次计算利润，最后一次计算利润才是真正意义的卖出
-        else if(prices[i] > buy){
-            profit += prices[i] - buy;
-            // 提供一个反悔操作，
-            // 看成当前手上拥有一支买入价格为prices[i]的股票，
-            // 将buy更新为prices[i]，这样一来，如果下一天股票价格继续上升，我们会获得
-            // price[i+1] - prices[i]的收益，加上这一天prices[i]-buy的收益，恰好等于这一天不进行任何操作，而在下一天卖出股票的收益
-            buy = prices[i]; 
-        }
-    }
-    return profit;
+
 };
 // @lc code=end
 
-
-// @after-stub-for-debug-begin
-module.exports = maxProfit;
-// @after-stub-for-debug-end
