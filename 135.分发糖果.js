@@ -50,7 +50,9 @@
  * @return {number}
  */
 var candy = function (ratings) {
-    //greedy agorithm
+    
+
+    //  greedy algorithm 
     let candy = new Array(ratings.length).fill(1);
     for (let i = 1; i < ratings.length; i++) {
         if (ratings[i] > ratings[i - 1]) {
@@ -63,7 +65,8 @@ var candy = function (ratings) {
             candy[i] = Math.max(candy[i], candy[i+1]+1)
         }
     }
-    let result = eval(candy.join("+"));
+    // let result = eval(candy.join("+"));
+    let result = candy.reduce((acc, cur) => acc + cur)
     return result;
 };
 // @lc code=end

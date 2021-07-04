@@ -37,8 +37,13 @@
  * @param {number[]} nums
  * @return {number}
  */
-var singleNumber = function(nums) {
-
+var singleNumber = function (nums) {
+  // let result = 0;
+  // for(const num of nums) {
+  //    result = result ^ num;
+  // }
+  // return result
+  return nums.reduce((prev, cur) =>prev ^ cur)
 };
 // @lc code=end
 
