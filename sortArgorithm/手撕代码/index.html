@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖</title>
+  <script src="./函数节流和抖动.js"></script>
+  <style>
+    .div1 {
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      background-color:aqua;
+    }
+    .div2 {
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      background-color:blueviolet;
+    }
+  </style>
+</head>
+<body>
+  <div class="div1">防抖区域</div>
+  <div class="div2">节流区域</div>
+  <script>
+    let div1 = document.getElementsByClassName('div1')[0];
+    let div2 = document.getElementsByClassName('div2')[0];
+    div1.addEventListener('mouseover',debounceRun);
+    div2.addEventListener('mouseover', throttleRun)
+  </script>
+</body>
+</html>

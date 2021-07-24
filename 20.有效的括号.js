@@ -10,7 +10,9 @@
  * @return {boolean}
  */
 var isValid = function (s) {
-    if (s.length % 2 !== 0) return false;
+   /*  
+    解法1：
+   if (s.length % 2 !== 0) return false;
     const mappings = new Map();
     mappings.set('(', ')');
     mappings.set('[', ']');
@@ -25,11 +27,16 @@ var isValid = function (s) {
             }
         }
     }
-    return !stack.length;
+    return !stack.length; */
     // if(stack.length === 0 ){
     //     return true;
     // }
     // return false;
+    while(s.includes("()") || s.includes("{}") || s.includes("[]")){
+      s = s.replace('[]','').replace('()','').replace('{}','');
+    }
+    s = s.replace('[]','').replace('()','').replace('{}','');
+    return s.length === 0;
 
 };
 // @lc code=end

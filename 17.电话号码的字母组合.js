@@ -78,7 +78,7 @@ var letterCombinations = function (digits) {
         }
         const letters = map[digits[index]]; // 选择当前数字对应的字母
         for(const letter of letters){
-            backtracking(str+letter, i+1); //选择翻译letter ，生成新字符
+            backtracking(str+letter, index+1); //选择翻译letter ，生成新字符
         }
     }
 

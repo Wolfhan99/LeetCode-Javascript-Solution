@@ -10,8 +10,20 @@
  * @param {number} val
  * @return {number}
  */
-var removeElement = function(nums, val) {
-
+var removeElement = function (nums, val) {
+  // nums.sort((a, b) => a - b);
+  let left = 0;
+  for(let right = 0;right<nums.length;right++){
+    if(nums[right]!==val){
+      nums[left] = nums[right];
+      left++;
+    }
+  }
+  return left;
 };
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = removeElement;
+// @after-stub-for-debug-end

@@ -55,7 +55,7 @@
  * @return {number}
  */
 var maxProfit = function (prices) {
-  let maxProfit = 0;
+  /* let maxProfit = 0;
   let cost = prices[0]
   for (let i = 1; i < prices.length; i++) {
     if(prices[i] < cost){
@@ -63,6 +63,34 @@ var maxProfit = function (prices) {
     }
     if(prices[i] - cost > maxProfit){
       maxProfit = prices[i] - cost;
+    }
+  }
+  return maxProfit; */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  let maxProfit = 0;
+  let min = prices[0];
+  for (let i = 1; i < prices.length; i++) {
+    if(prices[i] > prices[i-1]){
+      maxProfit = Math.max(maxProfit, prices[i] - min);
+    }else{
+      min = Math.min(min, prices[i]);
     }
   }
   return maxProfit;

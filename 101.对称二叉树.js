@@ -59,7 +59,17 @@
  * @return {boolean}
  */
 var isSymmetric = function(root) {
-
+  if(!root) return true;
+  return SymmetryChecker(root.left, root.right);
+  
 };
+
+function SymmetryChecker(left, right){
+  if(!left && !right) return true;
+  if(!left || !right) return false;
+  if(left.val !== right.val) return false;
+  return SymmetryChecker(left.left, right.right) && 
+  SymmetryChecker(left.right, right.left);
+}
 // @lc code=end
 

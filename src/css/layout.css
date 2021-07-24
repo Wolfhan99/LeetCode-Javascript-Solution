@@ -1,0 +1,36 @@
+.div1 {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: -150px;
+  background-color: pink;
+}
+
+
+
+.div2 {
+  width: 300px;
+  height: 500px;
+  background: red;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerdiv{
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
+

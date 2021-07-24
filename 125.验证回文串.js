@@ -36,29 +36,31 @@
  * @param {string} s
  * @return {boolean}
  */
-var isPalindrome = function(s) {
-  s = s.toUpperCase();
-  let i = 0, j = s.length - 1;
-  while(i < j){
-    if(!isValid(s[i])){
-      i++;
-      continue;
-    }
-    if(!isValid(s[j])){
-      j--;
-      continue;
-    }
-    if(s[i] !== s[j]){
+var isPalindrome = function (s) {
+  let a = s.toLocaleLowerCase().match(/[a-z0-9]+/g);
+  if (!a) return true;
+  let str = a.join('');
+  // 双指针
+  let left = 0, right = str.length - 1;
+  while (left < right) {
+    if (str[left] === str[right]) {
+      left++;
+      right--;
+    } else {
       return false;
     }
-    i++;
-    j--;
   }
   return true;
+
 };
 
-var isValid = function(s) {
+/* var isValid = function(s) {
+  let regex = /[0-9a-zA-z]/
   return (s >= '0' && s <= '9') || (s >= 'a' && s <= 'z') || (s >= 'A' && s <= 'Z');
-}
+} */
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = isPalindrome;
+// @after-stub-for-debug-end
