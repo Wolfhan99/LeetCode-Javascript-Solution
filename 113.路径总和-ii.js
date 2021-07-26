@@ -70,21 +70,39 @@
  * @param {number} targetSum
  * @return {number[][]}
  */
+// var pathSum = function (root, targetSum) {
+//   const res = [];
+//   const helper = function (root, sum, arr) {
+//     if (!root) return;
+//     sum-= root.val
+//     if (!root.left && !root.right && sum === 0) {
+//       res.push([...arr, root.val]);
+//     }
+//     arr.push(root.val)
+//     helper(root.left,sum, arr);
+//     helper(root.right,sum, arr);
+//     arr.pop();
+//   }
+//   helper(root, targetSum, []);
+//   return res;
+// };
 var pathSum = function (root, targetSum) {
-  const res = [];
-  const helper = function (root, sum, arr) {
-    if (!root) return;
-    sum-= root.val
-    if (!root.left && !root.right && sum === 0) {
-      res.push([...arr, root.val]);
-    }
-    arr.push(root.val)
-    helper(root.left,sum, arr);
-    helper(root.right,sum, arr);
-    arr.pop();
-  }
-  helper(root, targetSum, []);
+  if (root === null) return [];
+  let res = [];
+  backtrack(root, targetSum, res, []);
   return res;
+
 };
+
+function backtrack(root, sum, res, arr) {
+  if (root === null) return;
+  if (root.left === null && root.right === null && sum === root.val) {
+    return res.push([...arr, root.val]);
+  }
+  arr.push(root.val);
+  backtrack(root.left, sum - root.val, res, arr);
+  backtrack(root.right, sum - root.val, res, arr);
+  arr.pop();
+}
 // @lc code=end
 
