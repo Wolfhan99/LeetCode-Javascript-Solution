@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex三栏布局</title>
+  <style>
+
+    html * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html {
+      height: 100%;
+    }
+    .layout.flex {
+      height: 100%;
+    }
+    body{
+      height: 100%;
+    }
+    article {
+      height: 100%;
+    }
+
+    .layout article div {
+      height: 50%;
+    }
+
+    .left-center-right {
+      display: flex;
+    }
+
+    .layout.flex .left{
+      width: 300px;
+      background-color: red;
+    }
+
+    .layout.flex .center{
+      flex: 1;
+      background-color: orange;
+    }
+
+    .layout.flex .right{
+      width: 300px;
+      background-color: blue;
+    }
+
+  </style>
+</head>
+
+<body>
+  <section class="layout flex">
+    <article class="left-center-right">
+      <div class="left">我是left</div>
+      <div class="center">
+        我是center
+        <h1>flex布局解决方案</h1>
+      </div>
+      <div class="right">我是right</div>
+    </article>
+  </section>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .layout {
+            margin-bottom: 150px;
+        }
+
+
+        .layout article div { /*注意，这里是设置每个小块儿的高度为100px，而不是设置大容器的高度。大容器的高度要符合响应式*/
+            height: 100px;
+        }
+
+        /* 方法一 start */
+
+        .layout.float .left {
+            float: left;
+            width: 300px;
+            background: red;
+        }
+
+        .layout.float .right {
+            float: right;
+            width: 300px;
+            background: blue;
+        }
+
+        .layout.float .center {
+            background: green;
+
+        }
+
+        /* 方法一 end */
+
+
+        /* 方法二 start */
+        .layout.absolute .left-center-right {
+            position: relative;
+        }
+
+        .layout.absolute .left {
+            position: absolute;
+            left: 0;
+            width: 300px;
+            background: red;
+        }
+
+        /* 【重要】中间的区域，左侧定位300px，右侧定位为300px，即可完成。宽度会自使用 */
+        .layout.absolute .center {
+            position: absolute;
+            left: 300px;
+            right: 300px;
+            background: green;
+        }
+
+        .layout.absolute .right {
+            position: absolute;
+            right: 0;
+            width: 300px;
+            background: blue;
+        }
+
+
+        /* 方法二 end */
+    </style>
+</head>
+
+<body>
+
+    <!-- 方法一：浮动 start -->
+    <!-- 输入 section.layout.float，即可生成  -->
+    <section class="layout float">
+        <!-- 用  article 标签包裹左、中、右三个部分 -->
+        <article class="left-right-center">
+            <!-- 输入 div.left+div.right+div.center，即可生成 -->
+            <div class="left">
+                我是 left
+            </div>
+            <div class="right">
+                我是 right
+            </div>
+            <div class="center">
+                浮动解决方案
+                我是 center
+            </div>
+
+        </article>
+
+    </section>
+    <!-- 方法一：浮动 end -->
+
+    <section class="layout absolute">
+        <article class="left-center-right">
+            <div class="left">
+                我是 left
+            </div>
+            <div class="right">
+                我是 right
+            </div>
+            <div class="center">
+                <h1>绝对定位解决方案</h1>
+                我是 center
+            </div>
+        </article>
+    </section>
+</body>
+</html>
+
