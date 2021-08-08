@@ -67,13 +67,13 @@ var minEatingSpeed = function (piles, h) {
   let right = Math.max(...piles), left = 1;
   while (left < right) {
     const mid = Math.floor((left + right) / 2);
-    if(canEat(piles,mid,h)){
-      right  = mid; // 如果能吃完，则调整最大值为mid;
-    }else{
-      left =  mid + 1; //如果不能吃完，调整最小值为mid+1;
+    if (canEat(piles, mid, h)) {
+      right = mid; // 如果能吃完，则调整最大值为mid;
+    } else {
+      left = mid + 1; //如果不能吃完，调整最小值为mid+1;
     }
-}
-return right;
+  }
+  return right;
 };
 const canEat = (piles, speed, h) => {
   let sumTime = 0;

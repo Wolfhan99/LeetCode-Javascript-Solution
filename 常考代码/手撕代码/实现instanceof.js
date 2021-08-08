@@ -14,4 +14,4 @@ function instanceofFunc(obj, cons) {
   return false;
 }
 
-console.log(instanceofFunc(null, Function)) // true
+console.log(instanceofFunc(null, Function)) // false

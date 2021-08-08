@@ -7,6 +7,9 @@ apply 和 call类似，只是传入的参数形式是数组形式，而不是逗
 
 Function.prototype.myApply = function (context) {
   // console.log(this)
+  if(typeof this !== 'function'){
+    console.error('type error!')
+  }
   const fn = Symbol('fn');
   context = context || window;
   context.fn = this;
@@ -21,6 +24,7 @@ function test(arr) {
   console.log(arr);
   console.log(this.a, this.b);
 }
+let a = 1;
 
 test.myApply(
   {
