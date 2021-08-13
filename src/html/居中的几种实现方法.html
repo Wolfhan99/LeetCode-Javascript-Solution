@@ -15,12 +15,24 @@
   </div>
   <div class="mother">
     <div class="div2"></div>
+    <div id="div3" style='background-color:purple;width: 100px;height: 100px;'></div>
   </div>
 
   <div class="container">
     <div class="containerdiv"></div>
   </div>
-
+  <script>
+    let father = document.getElementsByClassName("div1")[0];
+    console.log(father);
+    father.addEventListener("click", function(){
+      console.log(father);
+    },true)
+    let div3 = document.getElementById("div3");
+    console.log(div3);
+    // father.addEventListener('click', function(){
+    //   console.log(father);
+    // })
+  </script>
 </body>
 
 </html>

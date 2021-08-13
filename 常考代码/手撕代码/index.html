@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,24 +12,62 @@
       width: 200px;
       height: 200px;
       margin: 20px;
-      background-color:aqua;
+      background-color: aqua;
     }
+
     .div2 {
       width: 200px;
       height: 200px;
       margin: 20px;
-      background-color:blueviolet;
+      background-color: blueviolet;
     }
   </style>
 </head>
+
 <body>
   <div class="div1">防抖区域</div>
   <div class="div2">节流区域</div>
+  <input type="text">
+  <input type="submit" id="input" value="提交">
   <script>
-    let div1 = document.getElementsByClassName('div1')[0];
-    let div2 = document.getElementsByClassName('div2')[0];
-    div1.addEventListener('mouseover',debounceRun);
-    div2.addEventListener('mouseover', throttleRun)
+    const btn = document.getElementById('input');
+    btn.addEventListener('click', debounce(submit, 1000, true), false);
+
+    function submit(e) {
+      console.log(this);
+      console.log(e);
+    }
+
+    function debounce(fn, wait, triggerNow) {
+      var t = null;
+      return function (e) {
+        // console.log(e);
+        if (t) {
+          clearTimeout(t);
+        }
+
+        if (triggerNow) {
+          let firstClick = !t;
+          if (firstClick) {
+            fn.apply(this, arguments);
+          }
+          t = setTimeout(() => {
+            t = null;
+          }, wait)
+
+        }else{
+          t = setTimeout(() => {
+          fn.apply(this, arguments);
+        }, wait)
+
+        }
+
+        
+
+
+      }
+    }
   </script>
 </body>
+
 </html>

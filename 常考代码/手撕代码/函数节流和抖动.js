@@ -14,8 +14,8 @@ function debounce(fn, wait) {
   var timer = null;
 
   return function () {
-    var context = this,
-      args = arguments;
+    // var context = this,
+    // var args = arguments;
 
     // 如果此时存在定时器的话，则取消之前的定时器重新计时
     if (timer) {
@@ -25,16 +25,17 @@ function debounce(fn, wait) {
 
     // 设置定时器， 使事件间隔指定事件后执行
     timer = setTimeout(() => {
-      fn.apply(context, args);
+      fn.apply(this, arguments);
     }, wait);
   };
 }
 
 var debounceRun = debounce(function () {
   console.log(123);
+  console.log(456)
 }, 2000);
 
-// window.addEventListener('mousemove', debounceRun)
+// window.addEventListener('mousemove', debounceRun);
 
 // 函数节流： 规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，
 // 如果在同一个单位时间内某事件被触发多次，只有一次能生效。

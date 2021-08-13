@@ -6,11 +6,11 @@
  * https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/description/
  *
  * algorithms
- * Easy (53.71%)
- * Likes:    567
+ * Easy (53.85%)
+ * Likes:    626
  * Dislikes: 0
- * Total Accepted:    248.8K
- * Total Submissions: 463.3K
+ * Total Accepted:    292.4K
+ * Total Submissions: 542.8K
  * Testcase Example:  '[1,1,2]'
  *
  * 存在一个按升序排列的链表，给你这个链表的头节点 head ，请你删除所有重复的元素，使每个元素 只出现一次 。
@@ -58,18 +58,7 @@
  * @return {ListNode}
  */
 var deleteDuplicates = function(head) {
-  const dummy = new ListNode(0);
-  let cur = dummy;
-  cur.next = head;
-  if(!head) return head;
-  while(cur.next.next){
-    if(cur.next.next && cur.next.next.val === cur.next.val){
-      cur.next = cur.next.next;
-    }else{
-      cur = cur.next;
-    }
-  }
-  return dummy.next;
+
 };
 // @lc code=end
 

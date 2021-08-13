@@ -49,21 +49,28 @@ function curry(fn, ...args) {
     // 如果不是，则返回一个函数
     return (...params) => {
       // 将前面传的全部参数传给curry，回到第一步的if判断，直到参数个数满足要求
-      return curry(fn, ...args, ...params)
-    }
+      return curry(fn, ...args, ...params);
+    };
   }
 }
 // test
-let add = curry((a, b, c) => a + b + c)
-// 一个一个测试
-console.log(add(1)(2)(3))
-console.log(add(1, 2)(3))
-console.log(add(1)(2, 3))
+let add = function (a, b, c) {
+  return a + b + c;
+};
 
+let curryAdd = curry(add);
+// let add = curry((a, b, c) => a + b + c);
+// 一个一个测试
+console.log(curryAdd(1)(2)(3));
+console.log(curryAdd(1, 2));
+// console.log(add(1, 2)(3));
+// console.log(add(1)(2, 3));
 
 function curryV1(fn, ...args) {
-  return fn.length <= args.length ? fn(...args) : curryV1.bind(null, fn, ...args)
-} 
+  return fn.length <= args.length
+    ? fn(...args)
+    : curryV1.bind(null, fn, ...args);
+}
 
 // test
 /* let add = curryV1((a,b,c) => a+b+c);
