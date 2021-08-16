@@ -42,3 +42,23 @@ Promise.newAllSettled = function (promiseArr) {
   });
 
 }
+
+Promise.MyAllSettled = function(promises){
+  let res = [];
+  return new Promise((resolve, reject) => {
+    promises = Array.isArray(promises) ? promises : [];
+    let len = promises.length;
+    if(len===0){
+      throw new TypeError('argument must be array');
+    }
+    promises.forEach((promise) =>{
+      promise.then(res => {
+        resolve(res);
+        res.push({value: res, status: 'fulfilled'})
+      }).catch(err => {
+        reject(err);
+        res.push({value: err, status: 'rejected'})
+      })
+    })
+  })
+}
