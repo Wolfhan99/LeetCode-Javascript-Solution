@@ -23,7 +23,7 @@ function isGoodWord(word) {
   if (Math.max(...arr) % Math.min(...arr) === 0 && Math.max(...arr) > Math.min(...arr)) {
     return true;
   }
-  return false
+  return false;
   // const arr = new Array(26).fill(0);
   // word.toLowerCase();
   // for (let i = 0; i < word.length; i++) {

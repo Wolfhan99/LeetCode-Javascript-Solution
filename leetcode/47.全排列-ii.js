@@ -71,8 +71,9 @@ const dfs = (nums, len, depth, path, used, res) => {
     }
      // 剪枝条件：i > 0 是为了保证 nums[i - 1] 有意义
     // 写 !used[i - 1] 是因为 nums[i - 1] 在深度优先遍历的过程中刚刚被撤销选择
+    // 重点就是剪枝：如果这个数和之前的数一样，并且之前的数还未使用过（说明已经回溯过）
 
-    if (i > 0 && nums[i] === nums[i - 1] && used[i - 1] === false) {
+    if (i > 0 && nums[i] === nums[i - 1] && !used[i - 1]) {
       continue;
     }
     path.push(nums[i]);
