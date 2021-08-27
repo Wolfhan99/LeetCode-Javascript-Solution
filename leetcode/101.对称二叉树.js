@@ -61,7 +61,7 @@
 var isSymmetric = function(root) {
   if(!root) return true;
   return SymmetryChecker(root.left, root.right);
-  
+  Number.MIN_SAFE_INTEGER
 };
 
 function SymmetryChecker(left, right){
