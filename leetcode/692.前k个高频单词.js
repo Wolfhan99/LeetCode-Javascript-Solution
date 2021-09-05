@@ -65,27 +65,41 @@
  */
 var topKFrequent = function (words, k) {
   // 方法一：利用map记录
-  const map = new Map();
-  for (const word of words) {
-    map.set(word, (map.get(word) || 0) + 1);
-  }
-  // localeCompare 按字母大小排序
-  let ans = [...map].sort((a, b) =>b[1]-a[1] || a[0].localeCompare(b[0])).
-            map(item => item[0]);
-  return ans.slice(0, k);
+  // const map = new Map();
+  // for (const word of words) {
+  //   map.set(word, (map.get(word) || 0) + 1);
+  // }
+  // // localeCompare 按字母大小排序
+  // let ans = [...map].sort((a, b) =>b[1]-a[1] || a[0].localeCompare(b[0])).
+  //           map(item => item[0]);
+  // return ans.slice(0, k);
   // 方法二：利用object记录
   
-   let hash = {};
-     for (let word of words) {
-         hash[word] = hash[word]+1||1;
-     }
-     let result = Object.keys(hash).sort((a,b)=>{
-             let countCompare = hash[b] - hash[a];
-             if (countCompare == 0) return a.localeCompare(b);
-             else return countCompare;
-         }   
-     );
-     return result.slice(0, k);
+  //  let hash = {};
+  //    for (let word of words) {
+  //        hash[word] = hash[word]+1||1;
+  //    }
+  //    let result = Object.keys(hash).sort((a,b)=>{
+  //            let countCompare = hash[b] - hash[a];
+  //            if (countCompare == 0) return a.localeCompare(b);
+  //            else return countCompare;
+  //        }   
+  //    );
+  //    return result.slice(0, k);
+  const map = new Map();
+  for(const word of words){
+      map.set(word, (map.get(word) || 0) + 1);
+  }
+  let res = []
+  for(const key of map.keys()){
+      res.push(key)
+  }
+  console.log(res)
+  res = res.sort((word1,word2) => 
+                  map.get(word1) === map.get(word2)
+                  ? word1.localeCompare(word2) 
+                  : map.get(word1) - map.get(word2))
+  return res.splice(0,k)
      
     
 };
