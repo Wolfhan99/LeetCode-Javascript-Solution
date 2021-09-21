@@ -66,24 +66,39 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-  const hash = new Map();
-  let l = 0; // left
-  let res = 0;
-  for (let r = 0; r < s.length; r++) {
-    if (hash.has(s[r]) && hash.get(s[r]) >= l) {
+  // const hash = new Map();
+  // let l = 0; // left
+  // let res = 0;
+  // for (let r = 0; r < s.length; r++) {
+  //   if (hash.has(s[r]) && hash.get(s[r]) >= l) {
 
-    /*   在判断是否是重复字符的时候，
-      别忘了加上 满足重复字符的索引大于左指针（&& map.get(s[r]) >= l） 这个附加条件，
-      不然就会出错。比如 abbcdea这个 case，在遍历到最后一个字符 a 的时候，
-      如果没有加上这个条件，最后一个 a 也会被认为是重复字符，从而产生错误。 */
+  //   /*   在判断是否是重复字符的时候，
+  //     别忘了加上 满足重复字符的索引大于左指针（&& map.get(s[r]) >= l） 这个附加条件，
+  //     不然就会出错。比如 abbcdea这个 case，在遍历到最后一个字符 a 的时候，
+  //     如果没有加上这个条件，最后一个 a 也会被认为是重复字符，从而产生错误。 */
 
       
-      l = hash.get(s[r]) + 1;
+  //     l = hash.get(s[r]) + 1;
+  //   }
+  //   res = Math.max(res, r - l + 1);
+  //   hash.set(s[r], r);
+  // }
+  // return res;
+  let map = new Map();
+  let left = 0, right = 0 //左指针
+  let res = 0;
+  while(right < s.length){
+    let c = s[right]
+    map.set(c, (map.get(c) || 0) + 1);
+    right++;
+    while(map.get(c) > 1){
+        let d = s[left]
+        map.set(d, map.get(d) - 1);
+        left++;
     }
-    res = Math.max(res, r - l + 1);
-    hash.set(s[r], r);
-  }
-  return res;
+    res = Math.max(res, right - left);
+}
+return res;
 };
 // @lc code=end
 
